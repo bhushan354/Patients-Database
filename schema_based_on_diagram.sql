@@ -19,3 +19,14 @@ CREATE TABLE medical_histories (
     status VARCHAR(255),
     CONSTRAINT fk_medical_histories FOREIGN KEY (patient_id) REFERENCES patients(id)
 );
+
+-- create the "treatments" table with the "id" column as a foreign key referencing the "id" column in the "medical_histories" table :
+
+CREATE TABLE treatments (
+    id INT PRIMARY KEY,
+    type VARCHAR(255),
+    name VARCHAR(255),
+    CONSTRAINT fk_treatments_medical_histories FOREIGN KEY (id) REFERENCES medical_histories(id)
+);
+
+-- 
