@@ -16,8 +16,8 @@ CREATE TABLE medical_histories (
     id INT PRIMARY KEY,
     admitted_at TIMESTAMP,
     patient_id INT,
-    status VARCHAR(255),
-    CONSTRAINT fk_medical_histories FOREIGN KEY (patient_id) REFERENCES patients(id)
+    status VARCHAR(255)
+    -- CONSTRAINT fk_medical_histories FOREIGN KEY (patient_id) REFERENCES patients(id)
 );
 
 -- create the "treatments" table with the "id" column as a foreign key referencing the "id" column in the "medical_histories" table :
@@ -25,8 +25,16 @@ CREATE TABLE medical_histories (
 CREATE TABLE treatments (
     id INT PRIMARY KEY,
     type VARCHAR(255),
-    name VARCHAR(255),
-    CONSTRAINT fk_treatments_medical_histories FOREIGN KEY (id) REFERENCES medical_histories(id)
+    name VARCHAR(255)
+    -- CONSTRAINT fk_treatments_medical_histories FOREIGN KEY (id) REFERENCES medical_histories(id)
+);
+
+--join table
+CREATE TABLE medical_histories_has_treatments (
+    medical_history_id INT,
+    treatment_id INT,
+    CONSTRAINT fk_mhht_medical_histories FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id),
+    CONSTRAINT fk_mhht_treatments FOREIGN KEY (treatment_id) REFERENCES treatments(id)
 );
 
 -- invoice_items table with all columns and foreign key referneced :
