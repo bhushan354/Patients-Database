@@ -29,4 +29,13 @@ CREATE TABLE treatments (
     CONSTRAINT fk_treatments_medical_histories FOREIGN KEY (id) REFERENCES medical_histories(id)
 );
 
--- 
+-- invoice_items table with all columns and foreign key referneced :
+CREATE TABLE invoice_items (
+    id INT PRIMARY KEY,
+    unit_price DECIMAL(10, 2),
+    quantity INT,
+    total_price DECIMAL(10, 2),
+    invoice_id INT,
+    treatment_id INT,
+    CONSTRAINT fk_invoice_items_treatments FOREIGN KEY (treatment_id) REFERENCES treatments(id)
+);
