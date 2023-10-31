@@ -39,3 +39,12 @@ CREATE TABLE invoice_items (
     treatment_id INT,
     CONSTRAINT fk_invoice_items_treatments FOREIGN KEY (treatment_id) REFERENCES treatments(id)
 );
+
+ CREATE TABLE invoices (
+    id INT PRIMARY KEY,
+    total_amount DECIMAL(10, 2),
+    generated_at TIMESTAMP,
+    payed_at TIMESTAMP,
+    medical_history_id INT,
+    CONSTRAINT fk_invoices_medical_histories FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id),
+);
