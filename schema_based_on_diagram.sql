@@ -38,10 +38,8 @@ CREATE INDEX index_invoices_on_medical_history_id ON invoices (medical_history_i
 CREATE TABLE treatments (
     id INT PRIMARY KEY,
     type VARCHAR(255),
-    name VARCHAR(255),
-    PRIMARY KEY(id)
-    -- CONSTRAINT fk_treatments_medical_histories FOREIGN KEY (id) REFERENCES medical_histories(id)
-);
+    name VARCHAR(255)
+)
 
 
 -- invoice_items table with all columns and foreign key referneced :
