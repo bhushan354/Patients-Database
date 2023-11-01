@@ -39,8 +39,7 @@ CREATE TABLE treatments (
     id INT PRIMARY KEY,
     type VARCHAR(255),
     name VARCHAR(255)
-)
-
+);
 
 -- invoice_items table with all columns and foreign key referneced :
 CREATE TABLE invoice_items (
