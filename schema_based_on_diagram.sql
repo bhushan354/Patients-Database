@@ -16,7 +16,7 @@ CREATE TABLE medical_histories (
     id INT PRIMARY KEY,
     admitted_at TIMESTAMP,
     patient_id INT,
-    status VARCHAR(255)
+    status VARCHAR(255),
     CONSTRAINT fk_medical_histories FOREIGN KEY (patient_id) REFERENCES patients(id)
 );
 
