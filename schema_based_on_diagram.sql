@@ -54,20 +54,18 @@ CREATE TABLE invoice_items (
     generated_at TIMESTAMP,
     payed_at TIMESTAMP,
     medical_history_id INT,
-    CONSTRAINT fk_invoices_medical_histories FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id),
+    CONSTRAINT fk_invoices_medical_histories FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id)
 );
 
 ALTER TABLE invoice_items
 ADD CONSTRAINT fk_invoices_invoiceItems FOREIGN KEY (invoice_id) REFERENCES invoices(id);
 
--- Add a B-tree index to the "patient_id" foreign key in the "medical_histories" table
 CREATE INDEX idx_patient_id ON medical_histories(patient_id);
 
--- Add a B-tree index to the "id" foreign key in the "treatments" table
-CREATE INDEX idx_medical_history_id ON treatments(id);
+CREATE INDEX idx_medical_history_id ON medical_histories_has_treatments(treatment_id);
 
--- Add a B-tree index to the "treatment_id" foreign key in the "invoice_items" table
+CREATE INDEX idx_medical_history_id ON medical_histories_has_treatments(medical_history_id);
+
 CREATE INDEX idx_treatment_id ON invoice_items(treatment_id);
 
--- Add a B-tree index to the "medical_history_id" foreign key in the "invoices" table
 CREATE INDEX idx_medical_history_id ON invoices(medical_history_id);
